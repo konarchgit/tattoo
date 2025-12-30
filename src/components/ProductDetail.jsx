@@ -25,23 +25,34 @@ const ProductDetail = () => {
     const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
 
     return (
-        <div style={{ background: 'white', color: 'black', minHeight: '100vh', paddingTop: '120px' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ background: 'white', color: 'black', minHeight: '100vh', paddingTop: window.innerWidth < 320 ? '80px' : '120px' }}>
+            <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: window.innerWidth < 320 ? '0 15px' : window.innerWidth < 768 ? '0 20px' : '0 40px'
+            }}>
 
                 {/* Product Main Section */}
-                <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 992 ? '1fr' : '1.2fr 1fr', gap: window.innerWidth < 768 ? '40px' : '80px', marginBottom: '100px' }}>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: window.innerWidth < 992 ? '1fr' : '1.2fr 1fr',
+                    gap: window.innerWidth < 320 ? '30px' : window.innerWidth < 768 ? '40px' : '80px',
+                    marginBottom: '100px'
+                }}>
 
                     {/* Left: Images */}
                     <div>
                         <div style={{
                             background: '#f8f8f8',
+                            width: '100%',
                             aspectRatio: '1',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             marginBottom: '20px',
                             position: 'relative',
-                            overflow: 'hidden'
+                            overflow: 'hidden',
+                            boxSizing: 'border-box'
                         }}>
                             <motion.img
                                 key={mainImage}
@@ -69,14 +80,14 @@ const ProductDetail = () => {
                         </div>
 
                         {/* Thumbnails */}
-                        <div style={{ display: 'flex', gap: '20px' }}>
+                        <div style={{ display: 'flex', gap: window.innerWidth < 320 ? '10px' : '20px', flexWrap: 'wrap' }}>
                             {product.gallery?.map((img, idx) => (
                                 <div
                                     key={idx}
                                     onClick={() => setMainImage(img)}
                                     style={{
-                                        width: '100px',
-                                        height: '100px',
+                                        width: window.innerWidth < 320 ? '60px' : '100px',
+                                        height: window.innerWidth < 320 ? '60px' : '100px',
                                         background: '#f8f8f8',
                                         cursor: 'pointer',
                                         border: mainImage === img ? '2px solid black' : '2px solid transparent',
@@ -91,8 +102,14 @@ const ProductDetail = () => {
 
                     {/* Right: Info */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                        <h1 style={{ fontSize: '3.5rem', fontWeight: 900, margin: 0, lineHeight: 1 }}>{product.name}</h1>
-                        <div style={{ fontSize: '1.8rem', fontWeight: 700 }}>{product.price}</div>
+                        <h1 style={{
+                            fontSize: window.innerWidth < 320 ? '1.8rem' : window.innerWidth < 768 ? '2.5rem' : '3.5rem',
+                            fontWeight: 900,
+                            margin: 0,
+                            lineHeight: 1.1,
+                            wordBreak: 'break-word'
+                        }}>{product.name}</h1>
+                        <div style={{ fontSize: window.innerWidth < 320 ? '1.4rem' : '1.8rem', fontWeight: 700 }}>{product.price}</div>
 
                         <p style={{ fontSize: '1rem', color: '#666', lineHeight: '1.8', margin: '10px 0' }}>
                             {product.description}
@@ -101,8 +118,8 @@ const ProductDetail = () => {
                         {product.tag === 'SOLD' ? (
                             <div style={{ color: '#ff2d55', fontWeight: 700, fontSize: '0.9rem' }}>Out of stock</div>
                         ) : (
-                            <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginTop: '10px' }}>
-                                <div style={{ display: 'flex', border: '1px solid #eee' }}>
+                            <div style={{ display: 'flex', flexDirection: window.innerWidth < 320 ? 'column' : 'row', gap: '20px', alignItems: window.innerWidth < 320 ? 'stretch' : 'center', marginTop: '10px' }}>
+                                <div style={{ display: 'flex', border: '1px solid #eee', justifyContent: 'center' }}>
                                     <button onClick={() => setQuantity(Math.max(1, quantity - 1))} style={{ padding: '15px 20px', border: 'none', background: 'none', cursor: 'pointer' }}>-</button>
                                     <input type="text" value={quantity} readOnly style={{ width: '50px', border: 'none', textAlign: 'center', fontWeight: 700 }} />
                                     <button onClick={() => setQuantity(quantity + 1)} style={{ padding: '15px 20px', border: 'none', background: 'none', cursor: 'pointer' }}>+</button>
@@ -213,10 +230,10 @@ const ProductDetail = () => {
             <footer style={{
                 background: '#111',
                 color: 'white',
-                padding: '100px 40px',
+                padding: window.innerWidth < 768 ? '60px 20px' : '100px 40px',
                 textAlign: 'center'
             }}>
-                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '20px' }}>
+                <h2 style={{ fontSize: window.innerWidth < 768 ? '2rem' : '2.5rem', fontWeight: 900, marginBottom: '20px' }}>
                     ART<span style={{ fontStyle: 'italic', fontWeight: 300 }}>STUDIO</span>
                 </h2>
                 <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '40px', opacity: 0.6 }}>
@@ -227,7 +244,8 @@ const ProductDetail = () => {
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    gap: '40px',
+                    flexWrap: 'wrap',
+                    gap: window.innerWidth < 768 ? '20px' : '40px',
                     fontSize: '0.8rem',
                     letterSpacing: '0.1em',
                     fontWeight: 900

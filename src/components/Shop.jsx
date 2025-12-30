@@ -70,17 +70,17 @@ const ProductCard = ({ product }) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '15px',
+                        gap: window.innerWidth < 320 ? '8px' : '15px',
                         opacity: 0,
                         transition: '0.3s'
                     }}>
-                        <div style={{ background: 'white', padding: '10px', borderRadius: '50%', color: 'black' }}><Eye size={20} /></div>
-                        <div style={{ background: 'white', padding: '10px', borderRadius: '50%', color: 'black' }}><Heart size={18} /></div>
+                        <div style={{ background: 'white', padding: window.innerWidth < 320 ? '6px' : '10px', borderRadius: '50%', color: 'black' }}><Eye size={window.innerWidth < 320 ? 16 : 20} /></div>
+                        <div style={{ background: 'white', padding: window.innerWidth < 320 ? '6px' : '10px', borderRadius: '50%', color: 'black' }}><Heart size={window.innerWidth < 320 ? 14 : 18} /></div>
                         <div
                             onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product, 1); }}
-                            style={{ background: 'white', padding: '10px', borderRadius: '50%', color: 'black' }}
+                            style={{ background: 'white', padding: window.innerWidth < 320 ? '6px' : '10px', borderRadius: '50%', color: 'black' }}
                         >
-                            <ShoppingBag size={18} />
+                            <ShoppingBag size={window.innerWidth < 320 ? 14 : 18} />
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ const Shop = () => {
                 }} />
                 <h1 style={{
                     color: 'white',
-                    fontSize: 'clamp(4rem, 10vw, 8rem)',
+                    fontSize: 'clamp(2rem, 10vw, 8rem)',
                     fontWeight: 900,
                     zIndex: 1,
                     margin: 0
@@ -154,18 +154,21 @@ const Shop = () => {
             <div style={{
                 maxWidth: '1200px',
                 margin: '0 auto',
-                padding: '0 40px 100px'
+                padding: window.innerWidth < 320 ? '0 15px 100px' : window.innerWidth < 768 ? '0 20px 100px' : '0 40px 100px'
             }}>
                 {/* Simple Bar with search/filter (visual) */}
                 <div style={{
                     display: 'flex',
+                    flexDirection: window.innerWidth < 480 ? 'column' : 'row',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '60px',
+                    alignItems: window.innerWidth < 480 ? 'center' : 'center',
+                    marginBottom: '40px',
                     borderBottom: '1px solid #eee',
-                    paddingBottom: '20px'
+                    paddingBottom: '20px',
+                    gap: '15px',
+                    textAlign: 'center'
                 }}>
-                    <p style={{ fontSize: '0.9rem', color: '#666' }}>Showing 1–{sortedProducts.length} of 24 results</p>
+                    <p style={{ fontSize: '0.85rem', color: '#666', margin: 0 }}>Showing 1–{sortedProducts.length} of {products.length} results</p>
                     <div style={{ position: 'relative' }}>
                         <select
                             value={sortBy}
@@ -199,8 +202,8 @@ const Shop = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                    gap: '40px 30px'
+                    gridTemplateColumns: window.innerWidth < 320 ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gap: window.innerWidth < 320 ? '30px' : '40px 30px'
                 }}>
                     {sortedProducts.map(product => (
                         <ProductCard key={product.id} product={product} />
@@ -212,11 +215,11 @@ const Shop = () => {
             <footer style={{
                 background: '#111',
                 color: 'white',
-                padding: '100px 40px',
+                padding: window.innerWidth < 768 ? '60px 20px' : '100px 40px',
                 textAlign: 'center'
             }}>
-                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '20px' }}>
-                    DOT<span style={{ fontStyle: 'italic', fontWeight: 300 }}>Work.</span>
+                <h2 style={{ fontSize: window.innerWidth < 768 ? '2rem' : '2.5rem', fontWeight: 900, marginBottom: '20px' }}>
+                    ART<span style={{ fontStyle: 'italic', fontWeight: 300 }}>STUDIO</span>
                 </h2>
                 <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '40px', opacity: 0.6 }}>
                     <span>BEHANCE</span>
@@ -226,7 +229,8 @@ const Shop = () => {
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    gap: '40px',
+                    flexWrap: 'wrap',
+                    gap: window.innerWidth < 768 ? '20px' : '40px',
                     fontSize: '0.8rem',
                     letterSpacing: '0.1em',
                     fontWeight: 900

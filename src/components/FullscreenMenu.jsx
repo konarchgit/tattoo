@@ -66,13 +66,14 @@ const FullscreenMenu = ({ isOpen, toggleMenu }) => {
                                     to={item.path}
                                     onClick={toggleMenu}
                                     style={{
-                                        fontSize: '5rem',
+                                        fontSize: window.innerWidth < 480 ? '3rem' : window.innerWidth < 768 ? '4rem' : '5rem',
                                         fontWeight: 900,
                                         cursor: 'pointer',
                                         transition: 'color 0.3s ease',
                                         textDecoration: 'none',
                                         color: 'white',
-                                        display: 'block'
+                                        display: 'block',
+                                        lineHeight: 1.2
                                     }}
                                     className="menu-link"
                                 >
@@ -88,10 +89,14 @@ const FullscreenMenu = ({ isOpen, toggleMenu }) => {
                         position: 'absolute',
                         bottom: '40px',
                         display: 'flex',
-                        gap: '40px',
-                        fontSize: '0.9rem',
+                        flexDirection: window.innerWidth < 480 ? 'row' : 'row',
+                        gap: window.innerWidth < 480 ? '20px' : '40px',
+                        fontSize: window.innerWidth < 480 ? '0.7rem' : '0.9rem',
                         letterSpacing: '0.2em',
-                        opacity: 0.6
+                        opacity: 0.6,
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                        width: '80%'
                     }}>
                         <span>INSTAGRAM</span>
                         <span>FACEBOOK</span>

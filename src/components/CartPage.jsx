@@ -54,7 +54,7 @@ const CartPage = () => {
                 }} />
                 <h1 style={{
                     color: 'white',
-                    fontSize: 'clamp(3rem, 10vw, 8rem)',
+                    fontSize: 'clamp(2rem, 10vw, 8rem)',
                     fontWeight: 900,
                     zIndex: 1,
                     margin: 0

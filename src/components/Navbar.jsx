@@ -26,7 +26,9 @@ const Navbar = ({ isOpen, toggleMenu }) => {
         top: 0,
         left: 0,
         width: '100%',
-        padding: scrolled ? (window.innerWidth < 768 ? '15px 20px' : '20px 40px') : (window.innerWidth < 768 ? '20px' : '40px'),
+        padding: scrolled
+          ? (window.innerWidth < 320 ? '10px 15px' : window.innerWidth < 768 ? '15px 20px' : '20px 40px')
+          : (window.innerWidth < 320 ? '15px' : window.innerWidth < 768 ? '20px' : '40px'),
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -40,7 +42,9 @@ const Navbar = ({ isOpen, toggleMenu }) => {
       }}>
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit', pointerEvents: 'auto' }}>
           <h1 style={{
-            fontSize: scrolled ? (window.innerWidth < 768 ? '1.2rem' : '1.5rem') : (window.innerWidth < 768 ? '1.5rem' : '2rem'),
+            fontSize: scrolled
+              ? (window.innerWidth < 320 ? '1rem' : window.innerWidth < 768 ? '1.2rem' : '1.5rem')
+              : (window.innerWidth < 320 ? '1.2rem' : window.innerWidth < 768 ? '1.5rem' : '2rem'),
             fontWeight: 900,
             cursor: 'pointer',
             margin: 0,
@@ -50,7 +54,7 @@ const Navbar = ({ isOpen, toggleMenu }) => {
           </h1>
         </Link>
 
-        <div style={{ display: 'flex', gap: '30px', alignItems: 'center', pointerEvents: 'auto' }}>
+        <div style={{ display: 'flex', gap: window.innerWidth < 320 ? '10px' : window.innerWidth < 768 ? '15px' : '30px', alignItems: 'center', pointerEvents: 'auto' }}>
           {/* Social Icons */}
           <div style={{ display: 'flex', gap: '20px', marginRight: '20px' }} className="nav-socials">
             <Instagram size={18} style={{ cursor: 'pointer' }} />
@@ -63,7 +67,7 @@ const Navbar = ({ isOpen, toggleMenu }) => {
             onClick={() => setIsCartOpen(true)}
             style={{ position: 'relative', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
           >
-            <ShoppingBag size={scrolled ? 24 : 28} />
+            <ShoppingBag size={window.innerWidth < 320 ? 20 : scrolled ? 24 : 28} />
             {cartCount > 0 && (
               <span style={{
                 position: 'absolute',
@@ -98,13 +102,13 @@ const Navbar = ({ isOpen, toggleMenu }) => {
               transition: 'transform 0.3s'
             }}
           >
-            {isOpen ? <X size={scrolled ? 28 : 32} /> : <Menu size={scrolled ? 28 : 32} />}
+            {isOpen ? <X size={window.innerWidth < 320 ? 24 : scrolled ? 28 : 32} /> : <Menu size={window.innerWidth < 320 ? 24 : scrolled ? 28 : 32} />}
           </div>
         </div>
-      </nav>
+      </nav >
 
       {/* Cart Drawer */}
-      <AnimatePresence>
+      < AnimatePresence >
         {isCartOpen && (
           <>
             {/* Overlay */}
@@ -228,8 +232,9 @@ const Navbar = ({ isOpen, toggleMenu }) => {
               )}
             </motion.div>
           </>
-        )}
-      </AnimatePresence>
+        )
+        }
+      </AnimatePresence >
     </>
   );
 };

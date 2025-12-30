@@ -72,9 +72,10 @@ const ShowcaseSlide = ({ slide, isActive }) => {
                             animate={isActive ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: 0.5, duration: 0.8 }}
                             style={{
-                                fontSize: 'clamp(3rem, 10vw, 8rem)',
-                                lineHeight: 0.8,
-                                margin: 0
+                                fontSize: 'clamp(2rem, 10vw, 8rem)',
+                                lineHeight: 1,
+                                margin: 0,
+                                wordBreak: 'break-word'
                             }}
                         >
                             {slide.title}
@@ -84,12 +85,13 @@ const ShowcaseSlide = ({ slide, isActive }) => {
                             animate={isActive ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: 0.8, duration: 0.8 }}
                             style={{
-                                fontSize: 'clamp(2rem, 8vw, 6rem)',
+                                fontSize: 'clamp(1.5rem, 8vw, 6rem)',
                                 fontStyle: 'italic',
                                 fontWeight: 300,
                                 textTransform: 'lowercase',
-                                marginTop: '-10px',
-                                color: 'rgba(255,255,255,0.8)'
+                                marginTop: '5px',
+                                color: 'rgba(255,255,255,0.8)',
+                                wordBreak: 'break-word'
                             }}
                         >
                             {slide.subtitle}

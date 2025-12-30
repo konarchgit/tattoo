@@ -151,8 +151,13 @@ const BlogPage = () => {
             </div>
 
             {/* Footer */}
-            <footer style={{ background: '#111', color: 'white', padding: '100px 40px', textAlign: 'center' }}>
-                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '20px' }}>
+            <footer style={{
+                background: '#111',
+                color: 'white',
+                padding: window.innerWidth < 768 ? '60px 20px' : '100px 40px',
+                textAlign: 'center'
+            }}>
+                <h2 style={{ fontSize: window.innerWidth < 768 ? '2rem' : '2.5rem', fontWeight: 900, marginBottom: '20px' }}>
                     ART<span style={{ fontStyle: 'italic', fontWeight: 300 }}>STUDIO</span>
                 </h2>
                 <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginBottom: '40px', opacity: 0.6 }}>
@@ -160,7 +165,15 @@ const BlogPage = () => {
                     <span>INSTAGRAM</span>
                     <span>TWITTER</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', fontSize: '0.8rem', letterSpacing: '0.1em', fontWeight: 900 }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                    gap: window.innerWidth < 768 ? '20px' : '40px',
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.1em',
+                    fontWeight: 900
+                }}>
                     <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>HOME</Link>
                     <span>ABOUT US</span>
                     <span>CONTACT US</span>
