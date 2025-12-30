@@ -29,7 +29,7 @@ const ProductDetail = () => {
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
 
                 {/* Product Main Section */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '80px', marginBottom: '100px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 992 ? '1fr' : '1.2fr 1fr', gap: window.innerWidth < 768 ? '40px' : '80px', marginBottom: '100px' }}>
 
                     {/* Left: Images */}
                     <div>

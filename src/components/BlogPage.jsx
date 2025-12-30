@@ -24,7 +24,7 @@ const BlogPage = () => {
             <div style={{ fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.1em', marginBottom: '15px' }}>
                 BY {post.author} {post.date} IN {post.category}, {post.comments} COMMENTS
             </div>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '20px', letterSpacing: '-0.02em' }}>{post.title}</h2>
+            <h2 style={{ fontSize: window.innerWidth < 768 ? '1.8rem' : '2.5rem', fontWeight: 900, marginBottom: '20px', letterSpacing: '-0.02em' }}>{post.title}</h2>
             <p style={{ color: '#666', lineHeight: '1.8', marginBottom: '25px', fontSize: '0.95rem' }}>{post.excerpt}</p>
             <Link to={`/blog/${post.id}`} style={{ textDecoration: 'none', color: 'black', fontWeight: 900, fontSize: '0.8rem', letterSpacing: '0.1em', display: 'flex', alignItems: 'center', gap: '5px' }}>
                 READ MORE <ChevronRight size={14} />
@@ -33,7 +33,7 @@ const BlogPage = () => {
     );
 
     const PostQuote = ({ post }) => (
-        <div style={{ background: '#0b0b0b', color: 'white', padding: '60px 80px', marginBottom: '80px', position: 'relative' }}>
+        <div style={{ background: '#0b0b0b', color: 'white', padding: window.innerWidth < 480 ? '40px 30px' : '60px 80px', marginBottom: '80px', position: 'relative' }}>
             <Quote size={40} style={{ position: 'absolute', top: '40px', left: '40px', opacity: 0.2 }} />
             <h3 style={{ fontSize: '1.2rem', fontWeight: 900, marginBottom: '20px', lineHeight: '1.5', position: 'relative' }}>{post.quote}</h3>
             <div style={{ fontSize: '0.8rem', color: '#888', fontStyle: 'italic' }}>- {post.author}</div>
@@ -77,7 +77,7 @@ const BlogPage = () => {
                 </h1>
             </section>
 
-            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px 100px', display: 'grid', gridTemplateColumns: '1fr 300px', gap: '60px' }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: window.innerWidth < 768 ? '0 20px 100px' : '0 40px 100px', display: 'grid', gridTemplateColumns: window.innerWidth < 992 ? '1fr' : '1fr 300px', gap: '60px' }}>
 
                 {/* Main Content */}
                 <div>

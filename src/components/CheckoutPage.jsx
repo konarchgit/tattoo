@@ -66,7 +66,7 @@ const CheckoutPage = () => {
                 </h1>
             </section>
 
-            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px 100px' }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: window.innerWidth < 768 ? '0 20px 100px' : '0 40px 100px' }}>
 
                 {/* Notices */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '60px' }}>
@@ -78,13 +78,13 @@ const CheckoutPage = () => {
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '80px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 992 ? '1fr' : '1.2fr 1fr', gap: window.innerWidth < 768 ? '40px' : '80px' }}>
 
                     {/* Billing Details */}
                     <div>
                         <h2 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '40px' }}>BILLING DETAILS</h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                            <div style={{ display: 'flex', gap: '20px' }}>
+                            <div style={{ display: 'flex', flexDirection: window.innerWidth < 480 ? 'column' : 'row', gap: '20px' }}>
                                 <InputField label="First name" required />
                                 <InputField label="Last name" required />
                             </div>
@@ -122,8 +122,8 @@ const CheckoutPage = () => {
 
                     {/* Order Summary */}
                     <div>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '40px' }}>YOUR ORDER</h2>
-                        <div style={{ border: '1px solid #eee', padding: '40px' }}>
+                        <h2 style={{ fontSize: window.innerWidth < 768 ? '1.8rem' : '2rem', fontWeight: 900, marginBottom: '40px' }}>YOUR ORDER</h2>
+                        <div style={{ border: '1px solid #eee', padding: window.innerWidth < 480 ? '20px' : '40px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #eee', paddingBottom: '20px', fontWeight: 900, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
                                 <span>PRODUCT</span>
                                 <span>SUBTOTAL</span>

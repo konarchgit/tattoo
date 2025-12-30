@@ -26,7 +26,7 @@ const Navbar = ({ isOpen, toggleMenu }) => {
         top: 0,
         left: 0,
         width: '100%',
-        padding: scrolled ? '20px 40px' : '40px',
+        padding: scrolled ? (window.innerWidth < 768 ? '15px 20px' : '20px 40px') : (window.innerWidth < 768 ? '20px' : '40px'),
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -40,7 +40,7 @@ const Navbar = ({ isOpen, toggleMenu }) => {
       }}>
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit', pointerEvents: 'auto' }}>
           <h1 style={{
-            fontSize: scrolled ? '1.5rem' : '2rem',
+            fontSize: scrolled ? (window.innerWidth < 768 ? '1.2rem' : '1.5rem') : (window.innerWidth < 768 ? '1.5rem' : '2rem'),
             fontWeight: 900,
             cursor: 'pointer',
             margin: 0,

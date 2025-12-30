@@ -138,10 +138,11 @@ const ShowcaseSlide = ({ slide, isActive }) => {
                 {slide.type === 'features' && (
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                         width: '100%',
-                        gap: '20px',
-                        maxWidth: '1200px'
+                        gap: '40px 20px',
+                        maxWidth: '1200px',
+                        padding: '40px 0'
                     }}>
                         {slide.features.map((feature, index) => {
                             const Icon = feature.icon;
@@ -204,12 +205,12 @@ const ShowcaseSlide = ({ slide, isActive }) => {
                 {slide.type === 'contact' && (
                     <div style={{
                         display: 'flex',
-                        width: '100vw',
-                        height: '100vh',
+                        flexDirection: window.innerWidth < 992 ? 'column' : 'row',
+                        width: '100%',
                         maxWidth: '1200px',
                         alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '5vw'
+                        justifyContent: 'center',
+                        gap: '40px'
                     }}>
                         {/* Left Side: Image */}
                         <motion.div
@@ -351,7 +352,7 @@ const ShowcaseSlide = ({ slide, isActive }) => {
 
                         <div style={{
                             display: 'grid',
-                            gridTemplateColumns: 'repeat(3, 1fr)',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                             width: '100%',
                             gap: '40px'
                         }}>
@@ -565,18 +566,20 @@ const ShowcaseSlide = ({ slide, isActive }) => {
             </div>
 
             {/* Decorative side labels */}
-            <div style={{
-                position: 'absolute',
-                right: '40px',
-                top: '50%',
-                transform: 'translateY(-50%) rotate(90deg)',
-                fontSize: '0.7rem',
-                letterSpacing: '0.3em',
-                opacity: 0.4,
-                zIndex: 3
-            }}>
-                Your Body Is Your Canvas
-            </div>
+            {window.innerWidth >= 768 && (
+                <div style={{
+                    position: 'absolute',
+                    right: '40px',
+                    top: '50%',
+                    transform: 'translateY(-50%) rotate(90deg)',
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.3em',
+                    opacity: 0.4,
+                    zIndex: 3
+                }}>
+                    Your Body Is Your Canvas
+                </div>
+            )}
         </div>
     );
 };
