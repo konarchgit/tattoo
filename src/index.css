@@ -1,13 +1,76 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
+
+:root {
+  --bg-color: #0b0b0b;
+  --text-color: #ffffff;
+  --accent-color: #ff2d55;
+  --font-main: 'Outfit', sans-serif;
+  --transition-slow: 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.9);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #443;
+}
+
+/* Swiper overrides */
+.swiper {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: 0.3;
+  width: 10px !important;
+  height: 10px !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #fff !important;
+  transform: scale(1.5);
 }
